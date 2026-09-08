@@ -1,0 +1,11 @@
+[Container]
+Image=localhost/short-upload:latest
+Network=systemd-short-upload
+PublishPort=8080:8080
+
+[Service]
+ExecStartPre=/usr/bin/podman network create --ignore --internal --disable-dns systemd-short-upload
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
